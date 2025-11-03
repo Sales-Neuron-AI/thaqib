@@ -29,7 +29,7 @@
     .card {
       background: white;
       border-radius: 20px;
-      padding: 40px;
+      padding: 36px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       position: relative;
       overflow: hidden;
@@ -47,7 +47,7 @@
     
     .header {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     
     .logo {
@@ -88,7 +88,7 @@
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
-      margin: 28px 0;
+      margin: 24px 0;
     }
     
     .form-section {
@@ -363,9 +363,9 @@
           <span>🤖</span>
           <span>AI-POWERED ANALYSIS</span>
         </div>
-        <h1>THAQIB Demo</h1>
+        <h1>Thaqib Intelligence</h1>
         <p class="subtitle">
-          Advanced technical analysis with real-time trade signals, comprehensive indicators, and AI-powered forecasts for US and Saudi equity markets. Developed for auto trading by Ahmad Alsharqatli on 03.11.2025
+          Advanced technical analysis with real-time trade signals, comprehensive indicators, and AI-powered forecasts for US equity markets. Generate professional 5-minute timeframe reports instantly.
         </p>
       </div>
       
@@ -492,10 +492,10 @@
         
         const html = await response.text();
         
-        // Inject clean, compact dark theme styling into the report
+        // Inject clean, organized, centered report styling
         const darkThemeStyles = `
 <style>
-  /* Clean Dark Professional Theme for Report */
+  /* Clean Organized Report Theme */
   * {
     margin: 0;
     padding: 0;
@@ -504,108 +504,126 @@
   
   body {
     background: #0f172a !important;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
     color: #ffffff !important;
     padding: 80px 20px 40px 20px !important;
     margin: 0 !important;
     min-height: 100vh !important;
-    line-height: 1.6 !important;
+    line-height: 1.5 !important;
   }
   
-  /* Container styling */
+  /* Center everything with max-width */
   body > * {
-    max-width: 1400px !important;
+    max-width: 1100px !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
   
-  /* Remove excessive backgrounds from divs */
+  /* Remove default styling from all containers */
   div, section, article {
     background: transparent !important;
+    border: none !important;
     border-radius: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
-    border: none !important;
   }
   
-  /* Main content sections */
-  body > div, body > section {
+  /* Main sections get dark cards */
+  body > div, body > section, body > main {
     background: #1e293b !important;
     border: 1px solid #334155 !important;
-    border-radius: 12px !important;
+    border-radius: 10px !important;
     padding: 24px !important;
-    margin-bottom: 16px !important;
+    margin-bottom: 20px !important;
   }
   
-  /* Headings - Clean white, no gradients */
-  h1, h2, h3, h4, h5, h6 {
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    margin: 0 0 16px 0 !important;
-    letter-spacing: -0.3px !important;
-    background: none !important;
-    -webkit-text-fill-color: initial !important;
-  }
-  
+  /* Header section - Big title with key info */
   h1 {
-    font-size: 28px !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-bottom: 20px !important;
     padding-bottom: 16px !important;
     border-bottom: 2px solid #334155 !important;
-    margin-bottom: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
   }
   
+  /* Section headers */
   h2 {
-    font-size: 20px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
     color: #3b82f6 !important;
-    padding-bottom: 12px !important;
+    margin: 24px 0 16px 0 !important;
+    padding-bottom: 10px !important;
     border-bottom: 1px solid #334155 !important;
-    margin-bottom: 16px !important;
-    margin-top: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
   }
   
+  /* Subsection headers */
   h3 {
-    font-size: 16px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
     color: #e2e8f0 !important;
-    margin-bottom: 12px !important;
+    margin: 16px 0 10px 0 !important;
   }
   
   h4, h5, h6 {
     font-size: 14px !important;
+    font-weight: 600 !important;
     color: #cbd5e1 !important;
-    margin-bottom: 8px !important;
+    margin: 12px 0 8px 0 !important;
   }
   
   /* Paragraphs and text */
-  p, span, li, td, th, div {
-    color: #e2e8f0 !important;
-    line-height: 1.6 !important;
+  p, span, li {
+    color: #cbd5e1 !important;
     font-size: 14px !important;
+    line-height: 1.6 !important;
   }
   
-  /* Strong/Bold - pure white */
+  /* Strong text */
   strong, b {
     color: #ffffff !important;
     font-weight: 600 !important;
   }
   
-  /* Links */
-  a {
-    color: #3b82f6 !important;
-    text-decoration: none !important;
-    transition: color 0.2s !important;
+  /* Grid layouts for cards */
+  [style*="display: grid"], [style*="display:grid"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 16px !important;
+    margin: 16px 0 !important;
   }
   
-  a:hover {
-    color: #60a5fa !important;
+  /* Flex layouts */
+  [style*="display: flex"], [style*="display:flex"] {
+    display: flex !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
   }
   
-  /* Tables - Compact and clean */
+  /* Info cards/boxes */
+  [class*="card"], [class*="box"], [class*="info"] {
+    background: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    margin: 8px 0 !important;
+  }
+  
+  /* Tables - Clean and organized */
   table {
     width: 100% !important;
     border-collapse: collapse !important;
     background: #1e293b !important;
-    margin: 16px 0 !important;
+    margin: 20px 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
   }
   
   th {
@@ -615,11 +633,12 @@
     padding: 12px 16px !important;
     text-align: left !important;
     font-size: 13px !important;
-    border-bottom: 2px solid #475569 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
   }
   
   td {
-    padding: 10px 16px !important;
+    padding: 12px 16px !important;
     border-bottom: 1px solid #334155 !important;
     color: #e2e8f0 !important;
     font-size: 14px !important;
@@ -633,80 +652,97 @@
     background: rgba(51, 65, 85, 0.3) !important;
   }
   
-  /* Grid layouts - Compact */
-  [style*="grid"], [class*="grid"] {
-    display: grid !important;
-    gap: 12px !important;
-    margin: 16px 0 !important;
+  /* Key-value pairs styling */
+  [class*="label"], label {
+    color: #94a3b8 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 4px !important;
+    display: block !important;
   }
   
-  /* Flex layouts - Compact */
-  [style*="flex"], [class*="flex"] {
-    display: flex !important;
-    gap: 12px !important;
+  [class*="value"] {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
   }
   
-  /* Cards/Boxes */
-  [class*="card"], [class*="box"], [class*="panel"] {
-    background: #1e293b !important;
-    border: 1px solid #334155 !important;
-    border-radius: 8px !important;
-    padding: 16px !important;
-    margin: 8px 0 !important;
-  }
-  
-  /* Badges/Tags - Clean, no gradients */
+  /* Badges and tags */
   [class*="badge"], [class*="tag"], .badge, .tag {
     background: #334155 !important;
     color: #ffffff !important;
-    padding: 4px 12px !important;
+    padding: 6px 12px !important;
     border-radius: 6px !important;
     font-size: 12px !important;
     font-weight: 600 !important;
     display: inline-block !important;
-    border: 1px solid #475569 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
+    margin: 4px !important;
   }
   
-  /* Positive indicators - Green */
-  .positive, .gain, .up, .buy, [class*="positive"], [class*="gain"], [class*="buy"] {
+  /* Color indicators */
+  .buy, .positive, .gain, .up, [class*="buy"], [class*="positive"], [class*="gain"] {
     color: #22c55e !important;
-    font-weight: 600 !important;
   }
   
-  /* Negative indicators - Red */
-  .negative, .loss, .down, .sell, [class*="negative"], [class*="loss"], [class*="sell"] {
+  .sell, .negative, .loss, .down, [class*="sell"], [class*="negative"], [class*="loss"] {
     color: #ef4444 !important;
-    font-weight: 600 !important;
   }
   
-  /* Neutral/Info - Blue */
-  .neutral, .info, [class*="neutral"], [class*="info"] {
+  .neutral, .hold, [class*="neutral"], [class*="hold"] {
     color: #3b82f6 !important;
   }
   
-  /* Warning - Yellow */
   .warning, [class*="warning"] {
-    color: #eab308 !important;
+    color: #f59e0b !important;
   }
   
-  /* Buttons - Clean navy */
-  button, .button, [class*="btn"] {
+  /* Buttons */
+  button, .button {
     background: #1e40af !important;
     color: #ffffff !important;
-    border: 1px solid #2563eb !important;
-    padding: 10px 20px !important;
+    border: none !important;
+    padding: 10px 18px !important;
     border-radius: 6px !important;
     font-weight: 600 !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     cursor: pointer !important;
-    transition: all 0.2s !important;
+    transition: background 0.2s !important;
   }
   
-  button:hover, .button:hover, [class*="btn"]:hover {
+  button:hover, .button:hover {
     background: #2563eb !important;
-    border-color: #3b82f6 !important;
+  }
+  
+  /* Lists */
+  ul, ol {
+    padding-left: 24px !important;
+    margin: 12px 0 !important;
+  }
+  
+  li {
+    margin-bottom: 8px !important;
+  }
+  
+  /* Horizontal rules */
+  hr {
+    border: none !important;
+    height: 1px !important;
+    background: #334155 !important;
+    margin: 24px 0 !important;
+  }
+  
+  /* Images and charts - full width */
+  img, canvas, svg {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    border: 1px solid #334155 !important;
+    margin: 16px 0 !important;
+    display: block !important;
   }
   
   /* Code blocks */
@@ -723,54 +759,24 @@
   pre {
     padding: 12px !important;
     overflow-x: auto !important;
+    display: block !important;
   }
   
-  /* Lists - Compact */
-  ul, ol {
-    padding-left: 20px !important;
-    margin: 12px 0 !important;
+  /* Links */
+  a {
+    color: #3b82f6 !important;
+    text-decoration: none !important;
   }
   
-  li {
-    margin-bottom: 6px !important;
-    color: #e2e8f0 !important;
-  }
-  
-  /* Horizontal rules */
-  hr {
-    border: none !important;
-    height: 1px !important;
-    background: #334155 !important;
-    margin: 20px 0 !important;
-  }
-  
-  /* Images and charts */
-  img, canvas, svg {
-    max-width: 100% !important;
-    height: auto !important;
-    border-radius: 8px !important;
-    border: 1px solid #334155 !important;
-  }
-  
-  /* Inputs */
-  input, select, textarea {
-    background: #1e293b !important;
-    border: 1px solid #334155 !important;
-    color: #ffffff !important;
-    padding: 8px 12px !important;
-    border-radius: 6px !important;
-    font-size: 14px !important;
-  }
-  
-  input:focus, select:focus, textarea:focus {
-    outline: none !important;
-    border-color: #3b82f6 !important;
+  a:hover {
+    color: #60a5fa !important;
+    text-decoration: underline !important;
   }
   
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 12px !important;
-    height: 12px !important;
+    width: 10px !important;
+    height: 10px !important;
   }
   
   ::-webkit-scrollbar-track {
@@ -779,8 +785,7 @@
   
   ::-webkit-scrollbar-thumb {
     background: #475569 !important;
-    border-radius: 6px !important;
-    border: 2px solid #1e293b !important;
+    border-radius: 5px !important;
   }
   
   ::-webkit-scrollbar-thumb:hover {
@@ -789,38 +794,42 @@
   
   /* Blockquotes */
   blockquote {
-    border-left: 4px solid #3b82f6 !important;
+    border-left: 3px solid #3b82f6 !important;
     padding-left: 16px !important;
     margin: 16px 0 !important;
     color: #94a3b8 !important;
   }
   
-  /* Remove any text gradients */
+  /* Remove text gradients */
   * {
-    background-clip: border-box !important;
-    -webkit-background-clip: border-box !important;
     -webkit-text-fill-color: initial !important;
+    background-clip: border-box !important;
   }
   
-  /* Compact spacing */
-  * + * {
-    margin-top: 0 !important;
-  }
-  
-  /* Ensure proper spacing only where needed */
-  h1 + *, h2 + *, h3 + * {
-    margin-top: 12px !important;
-  }
-  
-  p + p {
-    margin-top: 12px !important;
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    body {
+      padding: 60px 16px 32px 16px !important;
+    }
+    
+    body > div, body > section {
+      padding: 20px !important;
+    }
+    
+    h1 {
+      font-size: 22px !important;
+    }
+    
+    h2 {
+      font-size: 16px !important;
+    }
   }
 </style>
 `;
         
         // Inject back button HTML
         const backButtonHtml = `
-<button onclick="window.history.back()" style="position: fixed; top: 20px; left: 20px; background: #1e40af; color: white; border: 1px solid #2563eb; padding: 12px 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10000; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); transition: all 0.2s; border-radius: 8px;" onmouseover="this.style.background='#2563eb'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='#1e40af'; this.style.transform='translateY(0)';">← Back to Main</button>
+<button onclick="window.history.back()" style="position: fixed; top: 20px; left: 20px; background: #1e40af; color: white; border: none; padding: 12px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10000; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); transition: all 0.2s; border-radius: 8px;" onmouseover="this.style.background='#2563eb';" onmouseout="this.style.background='#1e40af';">← Back to Main</button>
 `;
         
         // Insert styles in head and back button in body
@@ -830,10 +839,8 @@
         if (modifiedHtml.includes('</head>')) {
           modifiedHtml = modifiedHtml.replace('</head>', darkThemeStyles + '</head>');
         } else if (modifiedHtml.includes('<body>')) {
-          // If no head tag, add styles right after body opens
           modifiedHtml = modifiedHtml.replace('<body>', '<body>' + darkThemeStyles);
         } else {
-          // If neither, add at the beginning
           modifiedHtml = darkThemeStyles + modifiedHtml;
         }
         
