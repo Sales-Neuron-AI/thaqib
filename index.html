@@ -584,7 +584,7 @@
     font-size: 12px !important;
     font-weight: 700 !important;
     color: #94a3b8 !important;
-    margin: 24px 0 12px 0 !important;
+    margin: 32px 0 16px 0 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
   }
@@ -593,7 +593,7 @@
     font-size: 12px !important;
     font-weight: 600 !important;
     color: #64748b !important;
-    margin: 16px 0 8px 0 !important;
+    margin: 20px 0 12px 0 !important;
   }
   
   /* Body text */
@@ -608,6 +608,20 @@
   strong, b {
     color: #ffffff !important;
     font-weight: 600 !important;
+  }
+  
+  /* Technical Indicators - Clean 3-column grid */
+  div > div[style*="display"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
+    margin: 20px 0 !important;
+  }
+  
+  @media (max-width: 768px) {
+    div > div[style*="display"] {
+      grid-template-columns: 1fr !important;
+    }
   }
   
   /* Tables for clean data display */
@@ -658,7 +672,7 @@
   
   .neutral, .hold, .consolidating,
   [class*="neutral"], [class*="hold"], [class*="consolidating"] {
-    color: #3b82f6 !important;
+    color: #ffffff !important;
     font-weight: 600 !important;
   }
   
@@ -678,16 +692,16 @@
     margin: 12px 0 !important;
   }
   
-  /* Labels */
+  /* Labels - BIGGER, BOLD, WHITE */
   [class*="label"],
   label {
     display: block !important;
-    color: #64748b !important;
-    font-size: 11px !important;
-    font-weight: 600 !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 8px !important;
   }
   
   /* Values */
