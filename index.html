@@ -290,6 +290,56 @@
       document.getElementById('ticker').focus();
     }
     
+    // Function to inject back button into report page
+    function injectBackButton() {
+      // Check if we're on a report page (not the main page)
+      if (!document.getElementById('reportForm')) {
+        const backButton = document.createElement('button');
+        backButton.innerHTML = '← BACK TO MAIN PAGE';
+        backButton.style.cssText = `
+          position: fixed;
+          top: 20px;
+          left: 20px;
+          background: #00ff00;
+          color: #000;
+          border: 2px solid #00ff00;
+          padding: 12px 24px;
+          font-family: 'Courier New', monospace;
+          font-size: 14px;
+          font-weight: bold;
+          cursor: pointer;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          z-index: 10000;
+          box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+          transition: all 0.3s;
+        `;
+        
+        backButton.onmouseover = function() {
+          this.style.background = '#00cc00';
+          this.style.transform = 'translateY(-2px)';
+          this.style.boxShadow = '0 0 30px rgba(0, 255, 0, 0.7)';
+        };
+        
+        backButton.onmouseout = function() {
+          this.style.background = '#00ff00';
+          this.style.transform = 'translateY(0)';
+          this.style.boxShadow = '0 0 20px rgba(0, 255, 0, 0.5)';
+        };
+        
+        backButton.onclick = function() {
+          window.history.back();
+        };
+        
+        document.body.insertBefore(backButton, document.body.firstChild);
+      }
+    }
+    
+    // Check if we need to inject back button on page load
+    window.addEventListener('load', () => {
+      injectBackButton();
+    });
+    
     document.getElementById('reportForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -341,14 +391,15 @@
         
         const html = await response.text();
         
-        // Open report in new tab
-        const newWindow = window.open('', '_blank');
-        if (newWindow) {
-          newWindow.document.write(html);
-          newWindow.document.close();
-        } else {
-          showError('Pop-up blocked! Please allow pop-ups for this site.');
-        }
+        // Navigate to report by replacing current page
+        document.open();
+        document.write(html);
+        document.close();
+        
+        // Inject back button into the report page after a brief delay
+        setTimeout(() => {
+          injectBackButton();
+        }, 100);
         
       } catch (err) {
         clearInterval(progressInterval);
