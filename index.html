@@ -22,14 +22,14 @@
     }
     
     .container {
-      max-width: 650px;
+      max-width: 600px;
       width: 100%;
     }
     
     .card {
       background: white;
-      border-radius: 20px;
-      padding: 36px;
+      border-radius: 16px;
+      padding: 32px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       position: relative;
       overflow: hidden;
@@ -47,7 +47,7 @@
     
     .header {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
     
     .logo {
@@ -55,30 +55,30 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     
     .logo-icon {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       background: linear-gradient(135deg, #1e40af, #2563eb);
-      border-radius: 10px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
     }
     
     h1 {
-      font-size: 28px;
+      font-size: 26px;
       color: #1a1a1a;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: -0.5px;
     }
     
     .subtitle {
-      font-size: 14px;
+      font-size: 13px;
       color: #6b7280;
       line-height: 1.5;
       max-width: 100%;
@@ -88,11 +88,11 @@
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
-      margin: 24px 0;
+      margin: 20px 0;
     }
     
     .form-section {
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     
     label {
@@ -492,10 +492,10 @@
         
         const html = await response.text();
         
-        // Inject clean, organized, centered report styling
+        // Inject professional report styling - no emojis, no glowing text, tables for data
         const darkThemeStyles = `
 <style>
-  /* Clean Organized Report Theme */
+  /* Professional Corporate Report Theme */
   * {
     margin: 0;
     padding: 0;
@@ -503,263 +503,264 @@
   }
   
   body {
-    background: #0f172a !important;
+    background: #0a0f1e !important;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
-    color: #ffffff !important;
-    padding: 80px 20px 40px 20px !important;
+    color: #e2e8f0 !important;
+    padding: 0 !important;
     margin: 0 !important;
     min-height: 100vh !important;
-    line-height: 1.5 !important;
   }
   
-  /* Center everything with max-width */
+  /* Centered container */
   body > * {
     max-width: 1100px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin: 80px auto 40px auto !important;
+    padding: 0 24px !important;
   }
   
-  /* Remove default styling from all containers */
-  div, section, article {
+  /* Main content wrapper */
+  body > div:first-of-type,
+  body > section:first-of-type,
+  body > main:first-of-type {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 10px !important;
+    padding: 36px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  /* Remove all nested element styling */
+  div, section, article, main {
     background: transparent !important;
     border: none !important;
-    border-radius: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
   }
   
-  /* Main sections get dark cards */
-  body > div, body > section, body > main {
-    background: #1e293b !important;
-    border: 1px solid #334155 !important;
-    border-radius: 10px !important;
-    padding: 24px !important;
-    margin-bottom: 20px !important;
-  }
-  
-  /* Header section - Big title with key info */
+  /* Page title */
   h1 {
-    font-size: 26px !important;
+    font-size: 22px !important;
     font-weight: 700 !important;
     color: #ffffff !important;
-    margin-bottom: 20px !important;
-    padding-bottom: 16px !important;
+    margin: 0 0 28px 0 !important;
+    padding: 0 0 20px 0 !important;
     border-bottom: 2px solid #334155 !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
   }
   
-  /* Section headers */
+  /* Remove emojis from headings */
+  h1::before, h2::before, h3::before {
+    content: '' !important;
+    display: none !important;
+  }
+  
+  /* Section headers - NO GLOWING, solid color */
   h2 {
-    font-size: 18px !important;
-    font-weight: 600 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
     color: #3b82f6 !important;
-    margin: 24px 0 16px 0 !important;
-    padding-bottom: 10px !important;
-    border-bottom: 1px solid #334155 !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
+    background: #0f172a !important;
+    margin: 28px 0 16px 0 !important;
+    padding: 12px 16px !important;
+    border-left: 4px solid #3b82f6 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
   }
   
-  /* Subsection headers */
+  h2:first-of-type {
+    margin-top: 0 !important;
+  }
+  
+  /* Subsections */
   h3 {
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    color: #e2e8f0 !important;
-    margin: 16px 0 10px 0 !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #94a3b8 !important;
+    margin: 20px 0 12px 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
   }
   
-  h4, h5, h6 {
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    color: #cbd5e1 !important;
-    margin: 12px 0 8px 0 !important;
-  }
-  
-  /* Paragraphs and text */
-  p, span, li {
+  /* Paragraphs */
+  p {
     color: #cbd5e1 !important;
     font-size: 14px !important;
-    line-height: 1.6 !important;
+    line-height: 1.7 !important;
+    margin: 12px 0 !important;
   }
   
-  /* Strong text */
+  /* Strong text - clean white */
   strong, b {
     color: #ffffff !important;
     font-weight: 600 !important;
   }
   
-  /* Grid layouts for cards */
-  [style*="display: grid"], [style*="display:grid"] {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    gap: 16px !important;
-    margin: 16px 0 !important;
-  }
-  
-  /* Flex layouts */
-  [style*="display: flex"], [style*="display:flex"] {
-    display: flex !important;
-    gap: 16px !important;
-    flex-wrap: wrap !important;
-  }
-  
-  /* Info cards/boxes */
-  [class*="card"], [class*="box"], [class*="info"] {
-    background: #0f172a !important;
-    border: 1px solid #334155 !important;
-    border-radius: 8px !important;
-    padding: 16px !important;
-    margin: 8px 0 !important;
-  }
-  
-  /* Tables - Clean and organized */
+  /* Tables - Professional data presentation */
   table {
     width: 100% !important;
     border-collapse: collapse !important;
-    background: #1e293b !important;
+    background: #0f172a !important;
     margin: 20px 0 !important;
+    border: 1px solid #334155 !important;
     border-radius: 8px !important;
     overflow: hidden !important;
+  }
+  
+  thead {
+    background: #334155 !important;
   }
   
   th {
     background: #334155 !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    padding: 12px 16px !important;
+    padding: 14px 16px !important;
     text-align: left !important;
-    font-size: 13px !important;
+    font-size: 12px !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
+    border-bottom: 2px solid #475569 !important;
   }
   
   td {
-    padding: 12px 16px !important;
+    padding: 14px 16px !important;
     border-bottom: 1px solid #334155 !important;
     color: #e2e8f0 !important;
     font-size: 14px !important;
+    vertical-align: top !important;
+  }
+  
+  tbody tr {
+    transition: background 0.15s !important;
+  }
+  
+  tbody tr:hover {
+    background: rgba(15, 23, 42, 0.6) !important;
   }
   
   tr:last-child td {
     border-bottom: none !important;
   }
   
-  tr:hover {
-    background: rgba(51, 65, 85, 0.3) !important;
+  /* Key-value display as table */
+  .info-table,
+  [class*="grid"],
+  [style*="display: grid"] {
+    display: table !important;
+    width: 100% !important;
+    margin: 20px 0 !important;
   }
   
-  /* Key-value pairs styling */
-  [class*="label"], label {
-    color: #94a3b8 !important;
+  /* Info cards - convert to table rows */
+  [class*="card"],
+  [class*="box"] {
+    display: table-row !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  
+  /* Labels and values */
+  [class*="label"],
+  label {
+    display: table-cell !important;
+    color: #64748b !important;
     font-size: 12px !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    margin-bottom: 4px !important;
-    display: block !important;
+    letter-spacing: 0.3px !important;
+    padding: 12px 16px !important;
+    width: 35% !important;
+    background: #0f172a !important;
+    border-bottom: 1px solid #334155 !important;
   }
   
   [class*="value"] {
+    display: table-cell !important;
     color: #ffffff !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    padding: 12px 16px !important;
+    background: #0f172a !important;
+    border-bottom: 1px solid #334155 !important;
+  }
+  
+  /* Color indicators - NO glowing */
+  .buy, .positive, .gain, .up, .bullish,
+  [class*="buy"], [class*="positive"], [class*="gain"], [class*="bullish"] {
+    color: #10b981 !important;
     font-weight: 600 !important;
   }
   
-  /* Badges and tags */
-  [class*="badge"], [class*="tag"], .badge, .tag {
-    background: #334155 !important;
-    color: #ffffff !important;
-    padding: 6px 12px !important;
-    border-radius: 6px !important;
-    font-size: 12px !important;
+  .sell, .negative, .loss, .down, .bearish,
+  [class*="sell"], [class*="negative"], [class*="loss"], [class*="bearish"] {
+    color: #dc2626 !important;
     font-weight: 600 !important;
-    display: inline-block !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    margin: 4px !important;
   }
   
-  /* Color indicators */
-  .buy, .positive, .gain, .up, [class*="buy"], [class*="positive"], [class*="gain"] {
-    color: #22c55e !important;
-  }
-  
-  .sell, .negative, .loss, .down, [class*="sell"], [class*="negative"], [class*="loss"] {
-    color: #ef4444 !important;
-  }
-  
-  .neutral, .hold, [class*="neutral"], [class*="hold"] {
+  .neutral, .hold,
+  [class*="neutral"], [class*="hold"] {
     color: #3b82f6 !important;
-  }
-  
-  .warning, [class*="warning"] {
-    color: #f59e0b !important;
-  }
-  
-  /* Buttons */
-  button, .button {
-    background: #1e40af !important;
-    color: #ffffff !important;
-    border: none !important;
-    padding: 10px 18px !important;
-    border-radius: 6px !important;
     font-weight: 600 !important;
-    font-size: 13px !important;
-    cursor: pointer !important;
-    transition: background 0.2s !important;
   }
   
-  button:hover, .button:hover {
-    background: #2563eb !important;
+  .warning,
+  [class*="warning"], [class*="risk"] {
+    color: #f59e0b !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Remove all emojis */
+  *::before {
+    content: '' !important;
   }
   
   /* Lists */
   ul, ol {
     padding-left: 24px !important;
-    margin: 12px 0 !important;
+    margin: 16px 0 !important;
   }
   
   li {
+    color: #cbd5e1 !important;
     margin-bottom: 8px !important;
+    line-height: 1.6 !important;
   }
   
-  /* Horizontal rules */
+  /* Dividers */
   hr {
     border: none !important;
     height: 1px !important;
     background: #334155 !important;
-    margin: 24px 0 !important;
+    margin: 28px 0 !important;
   }
   
-  /* Images and charts - full width */
+  /* Images and charts */
   img, canvas, svg {
     max-width: 100% !important;
     height: auto !important;
     border-radius: 8px !important;
     border: 1px solid #334155 !important;
-    margin: 16px 0 !important;
+    margin: 24px 0 !important;
     display: block !important;
   }
   
-  /* Code blocks */
+  /* Code */
   code, pre {
-    background: #0f172a !important;
+    background: #0a0f1e !important;
     border: 1px solid #334155 !important;
     border-radius: 4px !important;
-    padding: 2px 6px !important;
+    padding: 3px 8px !important;
     color: #94a3b8 !important;
     font-family: 'Courier New', monospace !important;
     font-size: 13px !important;
   }
   
   pre {
-    padding: 12px !important;
+    padding: 16px !important;
     overflow-x: auto !important;
-    display: block !important;
   }
   
   /* Links */
@@ -773,10 +774,34 @@
     text-decoration: underline !important;
   }
   
+  /* Buttons */
+  button:not([onclick*="history.back"]),
+  .button {
+    background: #1e40af !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 10px 18px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    cursor: pointer !important;
+  }
+  
+  button:hover:not([onclick*="history.back"]) {
+    background: #2563eb !important;
+  }
+  
+  /* Blockquotes */
+  blockquote {
+    border-left: 3px solid #3b82f6 !important;
+    padding-left: 16px !important;
+    margin: 16px 0 !important;
+    color: #94a3b8 !important;
+  }
+  
   /* Scrollbar */
   ::-webkit-scrollbar {
     width: 10px !important;
-    height: 10px !important;
   }
   
   ::-webkit-scrollbar-track {
@@ -792,36 +817,35 @@
     background: #64748b !important;
   }
   
-  /* Blockquotes */
-  blockquote {
-    border-left: 3px solid #3b82f6 !important;
-    padding-left: 16px !important;
-    margin: 16px 0 !important;
-    color: #94a3b8 !important;
-  }
-  
-  /* Remove text gradients */
+  /* No text effects */
   * {
+    text-shadow: none !important;
     -webkit-text-fill-color: initial !important;
-    background-clip: border-box !important;
   }
   
-  /* Responsive adjustments */
+  /* Responsive */
   @media (max-width: 768px) {
-    body {
-      padding: 60px 16px 32px 16px !important;
+    body > * {
+      margin: 60px auto 32px auto !important;
+      padding: 0 16px !important;
     }
     
-    body > div, body > section {
-      padding: 20px !important;
+    body > div:first-of-type,
+    body > section:first-of-type {
+      padding: 24px !important;
     }
     
     h1 {
-      font-size: 22px !important;
+      font-size: 18px !important;
     }
     
     h2 {
-      font-size: 16px !important;
+      font-size: 12px !important;
+    }
+    
+    th, td {
+      padding: 10px 12px !important;
+      font-size: 13px !important;
     }
   }
 </style>
@@ -829,13 +853,12 @@
         
         // Inject back button HTML
         const backButtonHtml = `
-<button onclick="window.history.back()" style="position: fixed; top: 20px; left: 20px; background: #1e40af; color: white; border: none; padding: 12px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10000; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); transition: all 0.2s; border-radius: 8px;" onmouseover="this.style.background='#2563eb';" onmouseout="this.style.background='#1e40af';">← Back to Main</button>
+<button onclick="window.history.back()" style="position: fixed; top: 20px; left: 20px; background: #1e40af; color: white; border: none; padding: 11px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10000; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); transition: background 0.2s; border-radius: 6px;" onmouseover="this.style.background='#2563eb';" onmouseout="this.style.background='#1e40af';">← Back</button>
 `;
         
-        // Insert styles in head and back button in body
+        // Insert styles and back button
         let modifiedHtml = html;
         
-        // Try to inject styles in head, if head exists
         if (modifiedHtml.includes('</head>')) {
           modifiedHtml = modifiedHtml.replace('</head>', darkThemeStyles + '</head>');
         } else if (modifiedHtml.includes('<body>')) {
@@ -844,7 +867,6 @@
           modifiedHtml = darkThemeStyles + modifiedHtml;
         }
         
-        // Insert back button after opening body tag
         if (modifiedHtml.includes('<body>')) {
           modifiedHtml = modifiedHtml.replace('<body>', '<body>' + backButtonHtml);
         } else if (modifiedHtml.includes('<body ')) {
@@ -853,11 +875,9 @@
           modifiedHtml = backButtonHtml + modifiedHtml;
         }
         
-        // Create a blob URL for the report HTML
+        // Create blob and navigate
         const blob = new Blob([modifiedHtml], { type: 'text/html' });
         const blobUrl = URL.createObjectURL(blob);
-        
-        // Navigate to the report (this preserves history)
         window.location.href = blobUrl;
         
       } catch (err) {
