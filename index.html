@@ -391,15 +391,66 @@
         
         const html = await response.text();
         
-        // Navigate to report by replacing current page
-        document.open();
-        document.write(html);
-        document.close();
+        // Inject back button script into the report HTML
+        const backButtonScript = `
+          <script>
+            (function() {
+              window.addEventListener('load', function() {
+                const backButton = document.createElement('button');
+                backButton.innerHTML = '← BACK TO MAIN PAGE';
+                backButton.style.cssText = \\\`
+                  position: fixed;
+                  top: 20px;
+                  left: 20px;
+                  background: #00ff00;
+                  color: #000;
+                  border: 2px solid #00ff00;
+                  padding: 12px 24px;
+                  font-family: 'Courier New', monospace;
+                  font-size: 14px;
+                  font-weight: bold;
+                  cursor: pointer;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  z-index: 10000;
+                  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+                  transition: all 0.3s;
+                \\\`;
+                
+                backButton.onmouseover = function() {
+                  this.style.background = '#00cc00';
+                  this.style.transform = 'translateY(-2px)';
+                  this.style.boxShadow = '0 0 30px rgba(0, 255, 0, 0.7)';
+                };
+                
+                backButton.onmouseout = function() {
+                  this.style.background = '#00ff00';
+                  this.style.transform = 'translateY(0)';
+                  this.style.boxShadow = '0 0 20px rgba(0, 255, 0, 0.5)';
+                };
+                
+                backButton.onclick = function() {
+                  window.history.back();
+                };
+                
+                document.body.insertBefore(backButton, document.body.firstChild);
+              });
+            })();
+          <\/script>
+        `;
         
-        // Inject back button into the report page after a brief delay
-        setTimeout(() => {
-          injectBackButton();
-        }, 100);
+        // Insert the back button script before closing body tag
+        const modifiedHtml = html.replace('</body>', backButtonScript + '</body>');
+        
+        // Store the main page HTML before navigating away
+        sessionStorage.setItem('thaqib_main_page', window.location.href);
+        
+        // Create a blob URL for the report HTML
+        const blob = new Blob([modifiedHtml], { type: 'text/html' });
+        const blobUrl = URL.createObjectURL(blob);
+        
+        // Navigate to the report (this preserves history)
+        window.location.href = blobUrl;
         
       } catch (err) {
         clearInterval(progressInterval);
