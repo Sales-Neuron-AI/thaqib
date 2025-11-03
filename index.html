@@ -363,10 +363,9 @@
           <span>🤖</span>
           <span>AI-POWERED ANALYSIS</span>
         </div>
-        <h1>Thaqib Demo</h1>
+        <h1>Thaqib Intelligence</h1>
         <p class="subtitle">
-          AI-powered technical analysis with trade signals, indicators, and forecasts.
-      Enter any US equity ticker to generate a comprehensive 5-minute timeframe report. Developed for auto trading by Ahmad Alsharqatli on 03.11.2025
+          Advanced technical analysis with real-time trade signals, comprehensive indicators, and AI-powered forecasts for US equity markets. Generate professional 5-minute timeframe reports instantly.
         </p>
       </div>
       
@@ -493,13 +492,254 @@
         
         const html = await response.text();
         
-        // Inject back button HTML and script into the report
+        // Inject comprehensive dark theme styling into the report
+        const darkThemeStyles = `
+<style>
+  /* Dark Professional Theme for Report */
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0a0e27 100%) !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif !important;
+    color: #e2e8f0 !important;
+    padding: 80px 20px 40px 20px !important;
+    margin: 0 !important;
+    min-height: 100vh !important;
+  }
+  
+  /* Container styling */
+  body > * {
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Card/Section styling */
+  div, section, article {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    margin-bottom: 16px !important;
+    letter-spacing: -0.5px !important;
+  }
+  
+  h1 {
+    font-size: 32px !important;
+    background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+  
+  h2 {
+    font-size: 24px !important;
+    color: #3b82f6 !important;
+    border-bottom: 2px solid rgba(37, 99, 235, 0.3) !important;
+    padding-bottom: 12px !important;
+  }
+  
+  h3 {
+    font-size: 20px !important;
+    color: #60a5fa !important;
+  }
+  
+  /* Paragraphs and text */
+  p, span, li, td, th {
+    color: #cbd5e1 !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* Links */
+  a {
+    color: #3b82f6 !important;
+    text-decoration: none !important;
+    transition: color 0.2s !important;
+  }
+  
+  a:hover {
+    color: #60a5fa !important;
+    text-decoration: underline !important;
+  }
+  
+  /* Tables */
+  table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+  
+  th {
+    background: linear-gradient(135deg, #1e40af, #2563eb) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 16px !important;
+    text-align: left !important;
+    text-transform: uppercase !important;
+    font-size: 13px !important;
+    letter-spacing: 0.5px !important;
+  }
+  
+  td {
+    padding: 14px 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: #e2e8f0 !important;
+  }
+  
+  tr:hover td {
+    background: rgba(255, 255, 255, 0.03) !important;
+  }
+  
+  /* Code blocks */
+  code, pre {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    color: #93c5fd !important;
+    font-family: 'Courier New', monospace !important;
+  }
+  
+  /* Lists */
+  ul, ol {
+    padding-left: 24px !important;
+    margin: 12px 0 !important;
+  }
+  
+  li {
+    margin-bottom: 8px !important;
+  }
+  
+  /* Buttons */
+  button, .button {
+    background: linear-gradient(135deg, #1e40af, #2563eb) !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4) !important;
+  }
+  
+  button:hover, .button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5) !important;
+  }
+  
+  /* Badges/Tags */
+  .badge, .tag, span[class*="badge"], span[class*="tag"] {
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.2), rgba(37, 99, 235, 0.2)) !important;
+    color: #60a5fa !important;
+    padding: 4px 12px !important;
+    border-radius: 12px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+    border: 1px solid rgba(96, 165, 250, 0.3) !important;
+  }
+  
+  /* Positive/Negative indicators */
+  .positive, .gain, .up, [class*="positive"], [class*="gain"] {
+    color: #10b981 !important;
+  }
+  
+  .negative, .loss, .down, [class*="negative"], [class*="loss"] {
+    color: #ef4444 !important;
+  }
+  
+  /* Charts and images */
+  img, canvas, svg {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px !important;
+    height: 10px !important;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #1e40af, #2563eb) !important;
+    border-radius: 5px !important;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+  }
+  
+  /* Dividers */
+  hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+    margin: 24px 0 !important;
+  }
+  
+  /* Strong/Bold text */
+  strong, b {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+  }
+  
+  /* Emphasis */
+  em, i {
+    color: #93c5fd !important;
+  }
+  
+  /* Blockquotes */
+  blockquote {
+    border-left: 4px solid #2563eb !important;
+    padding-left: 20px !important;
+    margin: 16px 0 !important;
+    color: #94a3b8 !important;
+    font-style: italic !important;
+  }
+</style>
+`;
+        
+        // Inject back button HTML
         const backButtonHtml = `
 <button onclick="window.history.back()" style="position: fixed; top: 20px; left: 20px; background: linear-gradient(135deg, #1e40af, #2563eb); color: white; border: none; padding: 12px 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10000; box-shadow: 0 10px 30px rgba(30, 64, 175, 0.4); transition: all 0.3s; border-radius: 12px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 15px 40px rgba(30, 64, 175, 0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(30, 64, 175, 0.4)';">← Back to Main</button>
 `;
         
-        // Insert the back button after opening body tag
-        const modifiedHtml = html.replace('<body>', '<body>' + backButtonHtml);
+        // Insert styles in head and back button in body
+        let modifiedHtml = html;
+        
+        // Try to inject styles in head, if head exists
+        if (modifiedHtml.includes('</head>')) {
+          modifiedHtml = modifiedHtml.replace('</head>', darkThemeStyles + '</head>');
+        } else if (modifiedHtml.includes('<body>')) {
+          // If no head tag, add styles right after body opens
+          modifiedHtml = modifiedHtml.replace('<body>', '<body>' + darkThemeStyles);
+        } else {
+          // If neither, add at the beginning
+          modifiedHtml = darkThemeStyles + modifiedHtml;
+        }
+        
+        // Insert back button after opening body tag
+        if (modifiedHtml.includes('<body>')) {
+          modifiedHtml = modifiedHtml.replace('<body>', '<body>' + backButtonHtml);
+        } else if (modifiedHtml.includes('<body ')) {
+          modifiedHtml = modifiedHtml.replace(/<body([^>]*)>/, '<body$1>' + backButtonHtml);
+        } else {
+          modifiedHtml = backButtonHtml + modifiedHtml;
+        }
         
         // Create a blob URL for the report HTML
         const blob = new Blob([modifiedHtml], { type: 'text/html' });
