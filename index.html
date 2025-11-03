@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Thaqib Demo</title>
+  <title>Thaqib - AI Financial Intelligence</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -12,272 +12,424 @@
     }
     
     body {
-      background: #000;
-      color: #00ff00;
-      font-family: 'Courier New', monospace;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0a0e27 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      min-height: 100vh;
+      padding: 40px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
     }
     
-    .terminal {
-      border: 2px solid #00ff00;
-      padding: 40px;
-      max-width: 600px;
+    .container {
+      max-width: 900px;
       width: 100%;
-      box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
-      background: #000;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #1e40af, #2563eb, #0f172a);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #1e40af, #2563eb);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
     }
     
     h1 {
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px #00ff00;
-      font-size: 32px;
+      font-size: 36px;
+      color: #1a1a1a;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
     }
     
     .subtitle {
-      margin-bottom: 30px;
-      color: #00aa00;
-      font-size: 14px;
+      font-size: 16px;
+      color: #6b7280;
       line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
     }
     
-    .input-group {
-      margin: 25px 0;
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+      margin: 40px 0;
+    }
+    
+    .form-section {
+      margin-bottom: 30px;
     }
     
     label {
       display: block;
-      margin-bottom: 10px;
       font-size: 14px;
-      color: #00ff00;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .input-wrapper {
+      position: relative;
     }
     
     input {
       width: 100%;
-      background: #001100;
-      border: 2px solid #00ff00;
-      color: #00ff00;
-      padding: 15px;
-      font-family: 'Courier New', monospace;
-      font-size: 20px;
+      padding: 18px 24px;
+      font-size: 18px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      background: #f9fafb;
+      color: #1a1a1a;
+      font-weight: 600;
       text-transform: uppercase;
-      transition: all 0.3s;
+      letter-spacing: 1px;
     }
     
     input:focus {
       outline: none;
-      box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-      border-color: #00ff00;
+      border-color: #1e40af;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
     }
     
     input::placeholder {
-      color: #006600;
+      color: #9ca3af;
       text-transform: none;
-      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0;
     }
     
-    button {
+    .btn {
       width: 100%;
-      background: #00ff00;
-      color: #000;
-      border: none;
-      padding: 18px;
-      font-family: 'Courier New', monospace;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 25px;
-      transition: all 0.3s;
+      padding: 20px;
+      font-size: 16px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 24px;
+      position: relative;
+      overflow: hidden;
     }
     
-    button:hover {
-      background: #00cc00;
-      box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+    .btn-primary {
+      background: linear-gradient(135deg, #1e40af, #2563eb);
+      color: white;
+      box-shadow: 0 10px 30px rgba(30, 64, 175, 0.4);
+    }
+    
+    .btn-primary:hover:not(:disabled) {
       transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(30, 64, 175, 0.5);
     }
     
-    button:active {
+    .btn-primary:active:not(:disabled) {
       transform: translateY(0);
     }
     
-    button:disabled {
-      background: #003300;
-      color: #006600;
+    .btn-primary:disabled {
+      background: #d1d5db;
       cursor: not-allowed;
-      transform: none;
+      box-shadow: none;
     }
     
     .loading {
       display: none;
       text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-      color: #00ff00;
+      margin-top: 30px;
+      padding: 30px;
+      background: #f9fafb;
+      border-radius: 16px;
+      border: 2px dashed #e5e7eb;
     }
     
     .loading.show {
       display: block;
     }
     
-    .loading-text {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #00aa00;
-    }
-    
     .spinner {
-      display: inline-block;
-      font-size: 24px;
+      width: 48px;
+      height: 48px;
+      border: 4px solid #e5e7eb;
+      border-top-color: #1e40af;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
     }
     
-    .progress {
-      display: none;
-      margin-top: 15px;
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
     
-    .progress.show {
-      display: block;
+    .loading-text {
+      font-size: 15px;
+      color: #6b7280;
+      margin-bottom: 20px;
+      font-weight: 500;
     }
     
     .progress-bar {
       width: 100%;
-      height: 6px;
-      background: #003300;
-      border: 1px solid #00ff00;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 10px;
       overflow: hidden;
-      margin-top: 10px;
     }
     
     .progress-fill {
       height: 100%;
-      background: #00ff00;
+      background: linear-gradient(90deg, #1e40af, #2563eb);
       width: 0%;
-      transition: width 0.5s ease;
+      transition: width 0.3s ease;
+      border-radius: 10px;
     }
     
     .error {
-      color: #ff0000;
-      margin-top: 20px;
-      padding: 15px;
-      border: 2px solid #ff0000;
-      background: #110000;
       display: none;
-      animation: shake 0.5s;
-    }
-    
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-10px); }
-      75% { transform: translateX(10px); }
+      margin-top: 20px;
+      padding: 16px 20px;
+      background: #fef2f2;
+      border: 2px solid #fca5a5;
+      border-radius: 12px;
+      color: #dc2626;
+      font-size: 14px;
+      font-weight: 500;
     }
     
     .error.show {
       display: block;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     .examples {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #003300;
-      font-size: 13px;
-      color: #00aa00;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #e5e7eb;
     }
     
     .examples-title {
-      margin-bottom: 12px;
-      color: #00ff00;
-      font-weight: bold;
+      font-size: 13px;
+      font-weight: 700;
+      color: #6b7280;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     
-    .example-ticker {
+    .ticker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 12px;
+    }
+    
+    .ticker-btn {
+      padding: 12px 16px;
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
       cursor: pointer;
-      text-decoration: underline;
-      margin-right: 15px;
-      transition: all 0.2s;
-      display: inline-block;
-      padding: 5px 10px;
-      border: 1px solid #003300;
-      margin-bottom: 8px;
+      transition: all 0.2s ease;
+      font-weight: 700;
+      color: #374151;
+      font-size: 14px;
+      text-align: center;
     }
     
-    .example-ticker:hover {
-      color: #00ff00;
-      border-color: #00ff00;
-      box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    .ticker-btn:hover {
+      background: white;
+      border-color: #1e40af;
+      color: #1e40af;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
     }
-
+    
     .footer {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #003300;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid #e5e7eb;
       text-align: center;
-      font-size: 11px;
-      color: #006600;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .footer-link {
+      color: #6b7280;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .footer-link:hover {
+      color: #1e40af;
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.15), rgba(37, 99, 235, 0.15));
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #2563eb;
+      margin-bottom: 16px;
+    }
+    
+    @media (max-width: 640px) {
+      .card {
+        padding: 30px 24px;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+      
+      .ticker-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      }
     }
   </style>
 </head>
 <body>
-  <div class="terminal">
-    <h1>📊 Thaqib Demo</h1>
-    <div class="subtitle">
-      AI-powered technical analysis with trade signals, indicators, and forecasts.
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="logo">
+          <div class="logo-icon">📊</div>
+        </div>
+        <div class="badge">
+          <span>🤖</span>
+          <span>AI-POWERED ANALYSIS</span>
+        </div>
+        <h1>Thaqib Demo</h1>
+        <p class="subtitle">
+          AI-powered technical analysis with trade signals, indicators, and forecasts.
       Enter any US equity ticker to generate a comprehensive 5-minute timeframe report. Developed for auto trading by Ahmad Alsharqatli on 03.11.2025
-    </div>
-    
-    <form id="reportForm">
-      <div class="input-group">
-        <label for="ticker">🎯 TICKER SYMBOL:</label>
-        <input 
-          type="text" 
-          id="ticker" 
-          name="ticker" 
-          placeholder="e.g., AAPL, TSLA, MSFT"
-          required
-          autocomplete="off"
-          maxlength="10"
-        />
+        </p>
       </div>
       
-      <button type="submit" id="submitBtn">
-        ▶ GENERATE REPORT
-      </button>
-    </form>
-    
-    <div class="loading" id="loading">
-      <div class="spinner">⣾</div>
-      <div class="loading-text">
-        Analyzing market data and generating report...<br/>
-        This may take 30-60 seconds...
-      </div>
-      <div class="progress show">
+      <div class="divider"></div>
+      
+      <form id="reportForm">
+        <div class="form-section">
+          <label for="ticker">🎯 Enter Ticker Symbol</label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="ticker" 
+              name="ticker" 
+              placeholder="e.g., AAPL, TSLA, MSFT"
+              required
+              autocomplete="off"
+              maxlength="10"
+            />
+          </div>
+        </div>
+        
+        <button type="submit" id="submitBtn" class="btn btn-primary">
+          Generate Report
+        </button>
+      </form>
+      
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <div class="loading-text">
+          Analyzing market data and generating comprehensive report...<br/>
+          This typically takes 30-60 seconds
+        </div>
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
         </div>
       </div>
-    </div>
-    
-    <div class="error" id="error"></div>
-    
-    <div class="examples">
-      <div class="examples-title">💡 POPULAR TICKERS:</div>
-      <span class="example-ticker" onclick="fillTicker('AAPL')">AAPL</span>
-      <span class="example-ticker" onclick="fillTicker('TSLA')">TSLA</span>
-      <span class="example-ticker" onclick="fillTicker('MSFT')">MSFT</span>
-      <span class="example-ticker" onclick="fillTicker('NVDA')">NVDA</span>
-      <span class="example-ticker" onclick="fillTicker('GOOGL')">GOOGL</span>
-      <span class="example-ticker" onclick="fillTicker('AMZN')">AMZN</span>
-      <span class="example-ticker" onclick="fillTicker('META')">META</span>
-      <span class="example-ticker" onclick="fillTicker('SPY')">SPY</span>
-    </div>
+      
+      <div class="error" id="error"></div>
+      
+      <div class="examples">
+        <div class="examples-title">💡 Popular Tickers</div>
+        <div class="ticker-grid">
+          <div class="ticker-btn" onclick="fillTicker('AAPL')">AAPL</div>
+          <div class="ticker-btn" onclick="fillTicker('TSLA')">TSLA</div>
+          <div class="ticker-btn" onclick="fillTicker('MSFT')">MSFT</div>
+          <div class="ticker-btn" onclick="fillTicker('NVDA')">NVDA</div>
+          <div class="ticker-btn" onclick="fillTicker('GOOGL')">GOOGL</div>
+          <div class="ticker-btn" onclick="fillTicker('AMZN')">AMZN</div>
+          <div class="ticker-btn" onclick="fillTicker('META')">META</div>
+          <div class="ticker-btn" onclick="fillTicker('SPY')">SPY</div>
+        </div>
+      </div>
 
-    <div class="footer">
-      ⚠️ Not financial advice • For educational purposes only<br/>
-      Powered by Claude, automoted with n8n.
+      <div class="footer">
+        <p>⚠️ Not financial advice • For educational and research purposes only</p>
+        <div class="footer-links">
+          <span>Powered by Claude AI</span>
+          <span>•</span>
+          <span>Automated with n8n</span>
+          <span>•</span>
+          <span>Developed by Ahmad Alsharqatli</span>
+        </div>
+      </div>
     </div>
   </div>
   
@@ -289,56 +441,6 @@
       document.getElementById('ticker').value = ticker;
       document.getElementById('ticker').focus();
     }
-    
-    // Function to inject back button into report page
-    function injectBackButton() {
-      // Check if we're on a report page (not the main page)
-      if (!document.getElementById('reportForm')) {
-        const backButton = document.createElement('button');
-        backButton.innerHTML = '← BACK TO MAIN PAGE';
-        backButton.style.cssText = `
-          position: fixed;
-          top: 20px;
-          left: 20px;
-          background: #00ff00;
-          color: #000;
-          border: 2px solid #00ff00;
-          padding: 12px 24px;
-          font-family: 'Courier New', monospace;
-          font-size: 14px;
-          font-weight: bold;
-          cursor: pointer;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          z-index: 10000;
-          box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
-          transition: all 0.3s;
-        `;
-        
-        backButton.onmouseover = function() {
-          this.style.background = '#00cc00';
-          this.style.transform = 'translateY(-2px)';
-          this.style.boxShadow = '0 0 30px rgba(0, 255, 0, 0.7)';
-        };
-        
-        backButton.onmouseout = function() {
-          this.style.background = '#00ff00';
-          this.style.transform = 'translateY(0)';
-          this.style.boxShadow = '0 0 20px rgba(0, 255, 0, 0.5)';
-        };
-        
-        backButton.onclick = function() {
-          window.history.back();
-        };
-        
-        document.body.insertBefore(backButton, document.body.firstChild);
-      }
-    }
-    
-    // Check if we need to inject back button on page load
-    window.addEventListener('load', () => {
-      injectBackButton();
-    });
     
     document.getElementById('reportForm').addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -356,7 +458,7 @@
       }
       
       if (!/^[A-Z]{1,10}$/.test(ticker)) {
-        showError('Invalid ticker symbol. Use only letters (A-Z)');
+        showError('Invalid ticker symbol. Please use only letters (A-Z)');
         return;
       }
       
@@ -393,7 +495,7 @@
         
         // Inject back button HTML and script into the report
         const backButtonHtml = `
-<button onclick="window.history.back()" style="position: fixed; top: 20px; left: 20px; background: #00ff00; color: #000; border: 2px solid #00ff00; padding: 12px 24px; font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; z-index: 10000; box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); transition: all 0.3s;" onmouseover="this.style.background='#00cc00'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 0 30px rgba(0, 255, 0, 0.7)';" onmouseout="this.style.background='#00ff00'; this.style.transform='translateY(0)'; this.style.boxShadow='0 0 20px rgba(0, 255, 0, 0.5)';">← BACK TO MAIN PAGE</button>
+<button onclick="window.history.back()" style="position: fixed; top: 20px; left: 20px; background: linear-gradient(135deg, #1e40af, #2563eb); color: white; border: none; padding: 12px 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; z-index: 10000; box-shadow: 0 10px 30px rgba(30, 64, 175, 0.4); transition: all 0.3s; border-radius: 12px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 15px 40px rgba(30, 64, 175, 0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(30, 64, 175, 0.4)';">← Back to Main</button>
 `;
         
         // Insert the back button after opening body tag
@@ -412,9 +514,9 @@
         
         let errorMsg = 'Failed to generate report. ';
         if (err.message.includes('Failed to fetch')) {
-          errorMsg += 'Network error - check your connection or webhook URL.';
+          errorMsg += 'Network error - please check your connection or webhook URL.';
         } else if (err.message.includes('404')) {
-          errorMsg += 'Webhook not found - verify the URL is correct.';
+          errorMsg += 'Webhook not found - please verify the URL is correct.';
         } else if (err.message.includes('500')) {
           errorMsg += 'Server error - the workflow may have an issue.';
         } else {
@@ -437,17 +539,6 @@
         error.classList.remove('show');
       }, 5000);
     }
-    
-    // Animated spinner
-    const spinnerFrames = ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷'];
-    let spinnerIndex = 0;
-    setInterval(() => {
-      const spinner = document.querySelector('.spinner');
-      if (spinner && document.getElementById('loading').classList.contains('show')) {
-        spinner.textContent = spinnerFrames[spinnerIndex];
-        spinnerIndex = (spinnerIndex + 1) % spinnerFrames.length;
-      }
-    }, 100);
   </script>
 </body>
 </html>
