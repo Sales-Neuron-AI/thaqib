@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TA Report Generator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: #000;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .terminal {
+      border: 2px solid #00ff00;
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+      background: #000;
+    }
+    
+    h1 {
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00ff00;
+      font-size: 32px;
+    }
+    
+    .subtitle {
+      margin-bottom: 30px;
+      color: #00aa00;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .input-group {
+      margin: 25px 0;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #00ff00;
+    }
+    
+    input {
+      width: 100%;
+      background: #001100;
+      border: 2px solid #00ff00;
+      color: #00ff00;
+      padding: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 20px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+      border-color: #00ff00;
+    }
+    
+    input::placeholder {
+      color: #006600;
+      text-transform: none;
+      font-size: 16px;
+    }
+    
+    button {
+      width: 100%;
+      background: #00ff00;
+      color: #000;
+      border: none;
+      padding: 18px;
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    button:hover {
+      background: #00cc00;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+      transform: translateY(-2px);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    button:disabled {
+      background: #003300;
+      color: #006600;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .loading {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #00ff00;
+    }
+    
+    .loading.show {
+      display: block;
+    }
+    
+    .loading-text {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #00aa00;
+    }
+    
+    .spinner {
+      display: inline-block;
+      font-size: 24px;
+    }
+    
+    .progress {
+      display: none;
+      margin-top: 15px;
+    }
+    
+    .progress.show {
+      display: block;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #003300;
+      border: 1px solid #00ff00;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: #00ff00;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+    
+    .error {
+      color: #ff0000;
+      margin-top: 20px;
+      padding: 15px;
+      border: 2px solid #ff0000;
+      background: #110000;
+      display: none;
+      animation: shake 0.5s;
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+    
+    .error.show {
+      display: block;
+    }
+    
+    .examples {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #003300;
+      font-size: 13px;
+      color: #00aa00;
+    }
+    
+    .examples-title {
+      margin-bottom: 12px;
+      color: #00ff00;
+      font-weight: bold;
+    }
+    
+    .example-ticker {
+      cursor: pointer;
+      text-decoration: underline;
+      margin-right: 15px;
+      transition: all 0.2s;
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid #003300;
+      margin-bottom: 8px;
+    }
+    
+    .example-ticker:hover {
+      color: #00ff00;
+      border-color: #00ff00;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    }
+
+    .footer {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #003300;
+      text-align: center;
+      font-size: 11px;
+      color: #006600;
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <h1>📊 TA REPORT GENERATOR</h1>
+    <div class="subtitle">
+      AI-powered technical analysis with trade signals, indicators, and forecasts.
+      Enter any US equity ticker to generate a comprehensive 5-minute timeframe report.
+    </div>
+    
+    <form id="reportForm">
+      <div class="input-group">
+        <label for="ticker">🎯 TICKER SYMBOL:</label>
+        <input 
+          type="text" 
+          id="ticker" 
+          name="ticker" 
+          placeholder="e.g., AAPL, TSLA, MSFT"
+          required
+          autocomplete="off"
+          maxlength="10"
+        />
+      </div>
+      
+      <button type="submit" id="submitBtn">
+        ▶ GENERATE REPORT
+      </button>
+    </form>
+    
+    <div class="loading" id="loading">
+      <div class="spinner">⣾</div>
+      <div class="loading-text">
+        Analyzing market data and generating report...<br/>
+        This may take 30-60 seconds...
+      </div>
+      <div class="progress show">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="error" id="error"></div>
+    
+    <div class="examples">
+      <div class="examples-title">💡 POPULAR TICKERS:</div>
+      <span class="example-ticker" onclick="fillTicker('AAPL')">AAPL</span>
+      <span class="example-ticker" onclick="fillTicker('TSLA')">TSLA</span>
+      <span class="example-ticker" onclick="fillTicker('MSFT')">MSFT</span>
+      <span class="example-ticker" onclick="fillTicker('NVDA')">NVDA</span>
+      <span class="example-ticker" onclick="fillTicker('GOOGL')">GOOGL</span>
+      <span class="example-ticker" onclick="fillTicker('AMZN')">AMZN</span>
+      <span class="example-ticker" onclick="fillTicker('META')">META</span>
+      <span class="example-ticker" onclick="fillTicker('SPY')">SPY</span>
+    </div>
+
+    <div class="footer">
+      ⚠️ Not financial advice • For educational purposes only<br/>
+      Powered by Claude AI + Yahoo Finance + Alpha Vantage
+    </div>
+  </div>
+  
+  <script>
+    // ⚠️ REPLACE THIS WITH YOUR ACTUAL N8N WEBHOOK URL
+    const WEBHOOK_URL = 'https://neuron-ai.app.n8n.cloud/webhook/thaqib';
+    
+    function fillTicker(ticker) {
+      document.getElementById('ticker').value = ticker;
+      document.getElementById('ticker').focus();
+    }
+    
+    document.getElementById('reportForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const ticker = document.getElementById('ticker').value.trim().toUpperCase();
+      const submitBtn = document.getElementById('submitBtn');
+      const loading = document.getElementById('loading');
+      const error = document.getElementById('error');
+      const progressFill = document.getElementById('progressFill');
+      
+      // Validate ticker
+      if (!ticker || ticker.length === 0) {
+        showError('Please enter a ticker symbol');
+        return;
+      }
+      
+      if (!/^[A-Z]{1,10}$/.test(ticker)) {
+        showError('Invalid ticker symbol. Use only letters (A-Z)');
+        return;
+      }
+      
+      // Reset UI
+      error.classList.remove('show');
+      loading.classList.add('show');
+      submitBtn.disabled = true;
+      progressFill.style.width = '0%';
+      
+      // Animate progress
+      let progress = 0;
+      const progressInterval = setInterval(() => {
+        progress += 1;
+        progressFill.style.width = Math.min(progress, 95) + '%';
+      }, 300);
+      
+      try {
+        const response = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ticker })
+        });
+        
+        clearInterval(progressInterval);
+        progressFill.style.width = '100%';
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const html = await response.text();
+        
+        // Open report in new tab
+        const newWindow = window.open('', '_blank');
+        if (newWindow) {
+          newWindow.document.write(html);
+          newWindow.document.close();
+        } else {
+          showError('Pop-up blocked! Please allow pop-ups for this site.');
+        }
+        
+      } catch (err) {
+        clearInterval(progressInterval);
+        console.error('Error:', err);
+        
+        let errorMsg = 'Failed to generate report. ';
+        if (err.message.includes('Failed to fetch')) {
+          errorMsg += 'Network error - check your connection or webhook URL.';
+        } else if (err.message.includes('404')) {
+          errorMsg += 'Webhook not found - verify the URL is correct.';
+        } else if (err.message.includes('500')) {
+          errorMsg += 'Server error - the workflow may have an issue.';
+        } else {
+          errorMsg += err.message;
+        }
+        
+        showError(errorMsg);
+      } finally {
+        loading.classList.remove('show');
+        submitBtn.disabled = false;
+      }
+    });
+    
+    function showError(message) {
+      const error = document.getElementById('error');
+      error.textContent = '❌ ' + message;
+      error.classList.add('show');
+      
+      setTimeout(() => {
+        error.classList.remove('show');
+      }, 5000);
+    }
+    
+    // Animated spinner
+    const spinnerFrames = ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷'];
+    let spinnerIndex = 0;
+    setInterval(() => {
+      const spinner = document.querySelector('.spinner');
+      if (spinner && document.getElementById('loading').classList.contains('show')) {
+        spinner.textContent = spinnerFrames[spinnerIndex];
+        spinnerIndex = (spinnerIndex + 1) % spinnerFrames.length;
+      }
+    }, 100);
+  </script>
+</body>
+</html>
